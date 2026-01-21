@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Rapunzel</title>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to bottom, #fff6fa, #ffe3ec);
+        font-family: "Poppins", sans-serif;
+        text-align: center;
+        overflow-x: hidden;
+    }
+
+    /* Glowing Name */
+    .glow-name {
+        margin-top: 50px;
+        font-size: 52px;
+        font-weight: 700;
+        color: #b3144c;
+        text-shadow: 0 0 10px rgba(255,192,203,0.8),
+                     0 0 20px rgba(255,175,190,0.7),
+                     0 0 30px rgba(255,150,170,0.6);
+    }
+
+    .subtitle {
+        font-size: 22px;
+        color: #905469;
+        margin-bottom: 25px;
+    }
+
+    /* Candles */
+    .candle-container {
+        margin-top: 40px;
+        display: flex;
+        justify-content: center;
+        gap: 35px;
+    }
+
+    .candle {
+        width: 28px;
+        height: 130px;
+        background: linear-gradient(to bottom, #ffd3e0, #ffb6ca);
+        border-radius: 12px;
+        position: relative;
+        box-shadow: 0 0 18px rgba(255,130,150,0.3);
+    }
+
+    .flame {
+        position: absolute;
+        top: -28px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 20px;
+        height: 30px;
+        background: radial-gradient(circle, #ffeb8a 20%, #ff9c00 60%, transparent 100%);
+        border-radius: 50%;
+        animation: flicker 1.6s infinite ease-in-out;
+        opacity: 0.9;
+        filter: blur(1px);
+    }
+
+    @keyframes flicker {
+        0% { transform: translateX(-50%) scale(1); opacity: 0.9; }
+        50% { transform: translateX(-52%) scale(1.12); opacity: 1; }
+        100% { transform: translateX(-50%) scale(1); opacity: 0.85; }
+    }
+
+    /* Rapunzel Photo */
+    .photo img {
+        width: 240px;
+        height: 240px;
+        border-radius: 22px;
+        margin-top: 40px;
+        object-fit: cover;
+        border: 3px solid #ffd9e4;
+        box-shadow: 0 0 22px rgba(0,0,0,0.18);
+    }
+
+    p {
+        width: 86%;
+        margin: auto;
+        margin-top: 30px;
+        font-size: 19px;
+        color: #5d4a4a;
+        line-height: 1.8;
+    }
+
+    /* Button */
+    button {
+        margin-top: 28px;
+        padding: 14px 28px;
+        border: none;
+        font-size: 17px;
+        border-radius: 14px;
+        background: linear-gradient(to right, #ff9ab8, #ff6f94);
+        color: white;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(255,105,135,0.4);
+        transition: 0.3s;
+    }
+    button:hover {
+        transform: scale(1.07);
+    }
+
+    /* Hidden Message */
+    #hiddenMessage {
+        display: none;
+        margin-top: 25px;
+        font-size: 18px;
+        color: #7a4f5b;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.7;
+    }
+
+    /* Floating Hearts */
+    .heart {
+        position: fixed;
+        top: -10px;
+        color: #ff7ca3;
+        font-size: 22px;
+        animation: fall 6.5s linear infinite;
+        opacity: 0.8;
+    }
+    @keyframes fall {
+        0% { transform: translateY(0) translateX(0); }
+        100% { transform: translateY(120vh) translateX(35px); }
+    }
+
+    /* Rose Petals */
+    .petal {
+        position: fixed;
+        top: -10px;
+        color: #ff99b8;
+        font-size: 20px;
+        opacity: 0.75;
+        animation: petalsFall 7s linear infinite;
+    }
+    @keyframes petalsFall {
+        0% { transform: translateY(0) rotate(0deg); }
+        100% { transform: translateY(110vh) rotate(360deg); }
+    }
+
+    .footer {
+        margin-top: 50px;
+        color: #7a5c66;
+        padding-bottom: 40px;
+        font-size: 16px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="glow-name">Happy Birthday, Rapunzel ❤️</div>
+<div class="subtitle">A Special Day for Someone Special</div>
+
+<!-- Candles -->
+<div class="candle-container">
+    <div class="candle"><div class="flame"></div></div>
+    <div class="candle"><div class="flame"></div></div>
+    <div class="candle"><div class="flame"></div></div>
+</div>
+
+<!-- Photo -->
+<div class="photo">
+    <img src="https://i.imgur.com/0ZQPpQp.png" alt="Photo">
+</div>
+
+<!-- Message -->
+<p>
+    Rapunzel, today is your day — a day as beautiful as your heart.  
+    Even though this year I couldn’t celebrate like before,  
+    my prayers, love, and care for you remain endless.  
+    I hope this small website brings a smile to your face.  
+    May Allah bless your new year with happiness, peace, and everything good.  
+    <br><br>— Yours, <strong>Zayn Ali</strong>
+</p>
+
+<button onclick="playMusic()">Play Birthday Music 🎶</button>
+
+<button onclick="revealMessage()">Reveal a Special Message 💗</button>
+
+<div id="hiddenMessage">
+    Rapunzel, I just want you to know that your kindness, your smile,  
+    and your presence bring light to so many days of my life.  
+    May this birthday mark the beginning of a year filled with joy,  
+    blessings, and beautiful memories.  
+</div>
+
+<audio id="song" src="https://www.dropbox.com/scl/fi/t5g0a4q32xgkik3xek0qe/hbd.mp3?raw=1"></audio>
+
+<div class="footer">
+    Made with ❤️ by Zayn
+</div>
+
+<script>
+    /* Hearts */
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.animationDuration = (4 + Math.random() * 5) + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 9000);
+    }
+    setInterval(createHeart, 500);
+
+    /* Rose Petals */
+    function createPetal() {
+        const petal = document.createElement("div");
+        petal.classList.add("petal");
+        petal.innerHTML = "🌸";
+        petal.style.left = Math.random() * window.innerWidth + "px";
+        petal.style.animationDuration = (5 + Math.random() * 5) + "s";
+        document.body.appendChild(petal);
+
+        setTimeout(() => petal.remove(), 9000);
+    }
+    setInterval(createPetal, 700);
+
+    /* Music */
+    function playMusic() {
+        document.getElementById("song").play();
+    }
+
+    /* Hidden Message */
+    function revealMessage() {
+        document.getElementById("hiddenMessage").style.display = "block";
+    }
+</script>
+
+</body>
+</html>
