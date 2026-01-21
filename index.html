@@ -5,131 +5,115 @@
 <title>Happy Birthday Rapunzel</title>
 
 <style>
-    body {
-        margin: 0;
-        padding: 0;
-        background: linear-gradient(to bottom, #fff6fa, #ffe3ec);
-        font-family: "Poppins", sans-serif;
-        text-align: center;
-        overflow-x: hidden;
-    }
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #fff6fa, #ffe3ec);
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    overflow-x: hidden;
+}
 
-    /* Glowing Name */
-    .glow-name {
-        margin-top: 50px;
-        font-size: 52px;
-        font-weight: 700;
-        color: #b3144c;
-        text-shadow: 0 0 10px rgba(255,192,203,0.8),
-                     0 0 20px rgba(255,175,190,0.7),
-                     0 0 30px rgba(255,150,170,0.6);
-    }
+/* Glowing Name */
+.glow-name {
+    margin-top: 50px;
+    font-size: 52px;
+    font-weight: 700;
+    color: #b3144c;
+    text-shadow: 0 0 10px rgba(255,192,203,0.8),
+                 0 0 20px rgba(255,175,190,0.7),
+                 0 0 30px rgba(255,150,170,0.6);
+}
 
-    .subtitle {
-        font-size: 22px;
-        color: #905469;
-        margin-bottom: 25px;
-    }
+.subtitle {
+    font-size: 22px;
+    color: #905469;
+    margin-bottom: 25px;
+}
 
-    /* Candles */
-    .candle-container {
-        margin-top: 40px;
-        display: flex;
-        justify-content: center;
-        gap: 35px;
-    }
+/* Candles */
+.candle-container {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+}
 
-    .candle {
-        width: 28px;
-        height: 130px;
-        background: linear-gradient(to bottom, #ffd3e0, #ffb6ca);
-        border-radius: 12px;
-        position: relative;
-        box-shadow: 0 0 18px rgba(255,130,150,0.3);
-    }
+.candle {
+    width: 28px;
+    height: 130px;
+    background: linear-gradient(to bottom, #ffd3e0, #ffb6ca);
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 0 0 18px rgba(255,130,150,0.3);
+}
 
-    .flame {
-        position: absolute;
-        top: -28px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 20px;
-        height: 30px;
-        background: radial-gradient(circle, #ffeb8a 20%, #ff9c00 60%, transparent 100%);
-        border-radius: 50%;
-        animation: flicker 1.6s infinite ease-in-out;
-        opacity: 0.9;
-        filter: blur(1px);
-    }
+.flame {
+    position: absolute;
+    top: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 30px;
+    background: radial-gradient(circle, #ffeb8a 20%, #ff9c00 60%, transparent 100%);
+    border-radius: 50%;
+    animation: flicker 1.6s infinite ease-in-out;
+    opacity: 0.9;
+    filter: blur(1px);
+}
 
-    @keyframes flicker {
-        0% { transform: translateX(-50%) scale(1); opacity: 0.9; }
-        50% { transform: translateX(-52%) scale(1.12); opacity: 1; }
-        100% { transform: translateX(-50%) scale(1); opacity: 0.85; }
-    }
+@keyframes flicker {
+    0% { transform: translateX(-50%) scale(1); opacity: 0.9; }
+    50% { transform: translateX(-52%) scale(1.12); opacity: 1; }
+    100% { transform: translateX(-50%) scale(1); opacity: 0.85; }
+}
 
-    p {
-        width: 86%;
-        margin: auto;
-        margin-top: 30px;
-        font-size: 19px;
-        color: #5d4a4a;
-        line-height: 1.8;
-    }
+/* Message */
+p {
+    width: 86%;
+    margin: auto;
+    margin-top: 30px;
+    font-size: 19px;
+    color: #5d4a4a;
+    line-height: 1.8;
+}
 
-    /* Buttons */
-    button {
-        margin-top: 18px;
-        padding: 14px 28px;
-        border: none;
-        font-size: 17px;
-        border-radius: 14px;
-        background: linear-gradient(to right, #ff9ab8, #ff6f94);
-        color: white;
-        cursor: pointer;
-        box-shadow: 0 4px 12px rgba(255,105,135,0.4);
-        transition: 0.3s;
-    }
-    button:hover {
-        transform: scale(1.07);
-    }
+/* Buttons */
+button {
+    margin-top: 18px;
+    padding: 14px 28px;
+    border: none;
+    font-size: 17px;
+    border-radius: 14px;
+    background: linear-gradient(to right, #ff9ab8, #ff6f94);
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(255,105,135,0.4);
+    transition: 0.3s;
+}
+button:hover {
+    transform: scale(1.07);
+}
 
-    /* Animations */
-    .heart, .petal, .balloon {
-        position: fixed;
-        top: -10px;
-        opacity: 0.8;
-        animation: fall 7s linear infinite;
-    }
-    .heart { color: #ff7ca3; font-size: 22px; }
-    .petal { color: #ff99b8; font-size: 22px; }
-    .balloon { font-size: 30px; }
+/* Fireworks / Poppers */
+.effect {
+    position: fixed;
+    font-size: 40px;
+    animation: explode 1s ease-out forwards;
+}
 
-    @keyframes fall {
-        0% { transform: translateY(0) rotate(0deg); }
-        100% { transform: translateY(110vh) rotate(360deg); }
-    }
+@keyframes explode {
+    0% { transform: scale(0); opacity: 1; }
+    50% { transform: scale(2); opacity: 1; }
+    100% { transform: scale(3); opacity: 0; }
+}
 
-    /* Firework explosion */
-    @keyframes pop {
-        0% { transform: scale(0); opacity: 1; }
-        100% { transform: scale(3); opacity: 0; }
-    }
-    .popper {
-        position: fixed;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 40px;
-        animation: pop 1s ease-out forwards;
-    }
-
-    .footer {
-        margin-top: 50px;
-        color: #7a5c66;
-        padding-bottom: 40px;
-        font-size: 16px;
-    }
+.footer {
+    margin-top: 50px;
+    color: #7a5c66;
+    padding-bottom: 40px;
+    font-size: 16px;
+}
 </style>
 </head>
 
@@ -147,100 +131,52 @@
 
 <!-- Romantic Message -->
 <p>
-    Rapunzel,  
-    your presence brings a softness to life that cannot be described in words.  
-    Today, on your special day, I wish your heart finds peace, joy, and endless smiles.  
-    Even if my celebration is simple this year, my feelings will always remain warm,  
-    gentle, and sincere for you.  
-    May Allah bless every step you take today and always.  
-    <br><br>— Yours, <strong>Zayn Ali</strong>
+You mean more to me than I ever managed to say, and I truly hope this new year brings you comfort, joy, and everything beautiful.  
+I know I couldn't celebrate your day the way I used to. Life kept me busier than I expected and I am sorry for that, but even in the middle of everything, you stayed important to me.  
+That's why I chose a locket with your name — a small way to show how much I care and how deeply I value you.  
+I hope it brings a little warmth to your day.
 </p>
 
 <!-- Buttons -->
-<button onclick="playMusic()">Play Birthday Music 🎶</button>
-<button onclick="launchPoppers()">Party Poppers 🎉</button>
-<button onclick="launchHearts()">Heart Explosion ❤️</button>
-<button onclick="releaseBalloons()">Release Balloons 🎈</button>
-<button onclick="fireworks()">Fireworks ✨</button>
-
-<audio id="song" src="https://www.dropbox.com/scl/fi/t5g0a4q32xgkik3xek0qe/hbd.mp3?raw=1"></audio>
+<button onclick="firePoppers()">Party Poppers 🎉</button>
+<button onclick="fireFireworks()">Fireworks ✨</button>
 
 <div class="footer">
-    Made with ❤️ by Zayn
+Made with ❤️ by Zayn
 </div>
 
 <script>
-    /* Hearts Falling */
-    function createHeart() {
-        const h = document.createElement("div");
-        h.classList.add("heart");
-        h.innerHTML = "❤️";
-        h.style.left = Math.random() * window.innerWidth + "px";
-        document.body.appendChild(h);
-        setTimeout(() => h.remove(), 9000);
-    }
-    setInterval(createHeart, 800);
+const colors = ["#ff4d6d", "#ff99b8", "#ffd3e0", "#ffb6ca", "#ff7aa1"];
 
-    /* Rose Petals */
-    function createPetal() {
-        const p = document.createElement("div");
-        p.classList.add("petal");
-        p.innerHTML = "🌸";
-        p.style.left = Math.random() * window.innerWidth + "px";
-        document.body.appendChild(p);
-        setTimeout(() => p.remove(), 9000);
-    }
-    setInterval(createPetal, 900);
-
-    /* Music */
-    function playMusic() {
-        document.getElementById("song").play();
-    }
-
-    /* Party Poppers */
-    function launchPoppers() {
+/* Party Poppers */
+function firePoppers() {
+    for (let i = 0; i < 7; i++) {
         const pop = document.createElement("div");
-        pop.classList.add("popper");
+        pop.classList.add("effect");
         pop.innerHTML = "🎉";
+        pop.style.left = (30 + Math.random()*40) + "%";
+        pop.style.top = (30 + Math.random()*40) + "%";
+        pop.style.color = colors[Math.floor(Math.random() * colors.length)];
         document.body.appendChild(pop);
-        setTimeout(() => pop.remove(), 1200);
+        setTimeout(() => pop.remove(), 1400);
     }
+}
 
-    /* Heart Explosion */
-    function launchHearts() {
-        for (let i = 0; i < 20; i++) {
-            const h = document.createElement("div");
-            h.classList.add("heart");
-            h.innerHTML = "❤️";
-            h.style.left = 50 + Math.random() * 200 - 100 + "%";
-            h.style.top = 50 + Math.random() * 200 - 100 + "%";
-            h.style.animationDuration = "2s";
-            document.body.appendChild(h);
-            setTimeout(() => h.remove(), 2500);
-        }
+/* Fireworks with multiple bursts and colors */
+function fireFireworks() {
+    for (let i = 0; i < 10; i++) {
+        const fw = document.createElement("div");
+        fw.classList.add("effect");
+        fw.innerHTML = "✨";
+        fw.style.left = (10 + Math.random()*80) + "%";
+        fw.style.top = (10 + Math.random()*60) + "%";
+        fw.style.color = colors[Math.floor(Math.random() * colors.length)];
+        fw.style.fontSize = (20 + Math.random()*30) + "px";
+        fw.style.animationDuration = (0.8 + Math.random()*0.5) + "s";
+        document.body.appendChild(fw);
+        setTimeout(() => fw.remove(), 1200);
     }
-
-    /* Balloons */
-    function releaseBalloons() {
-        for (let i = 0; i < 5; i++) {
-            const b = document.createElement("div");
-            b.classList.add("balloon");
-            b.innerHTML = "🎈";
-            b.style.left = Math.random() * window.innerWidth + "px";
-            b.style.animation = "fall 6s linear infinite reverse";
-            document.body.appendChild(b);
-            setTimeout(() => b.remove(), 7000);
-        }
-    }
-
-    /* Fireworks */
-    function fireworks() {
-        const f = document.createElement("div");
-        f.classList.add("popper");
-        f.innerHTML = "✨";
-        document.body.appendChild(f);
-        setTimeout(() => f.remove(), 1200);
-    }
+}
 </script>
 
 </body>
