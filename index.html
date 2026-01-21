@@ -68,17 +68,6 @@
         100% { transform: translateX(-50%) scale(1); opacity: 0.85; }
     }
 
-    /* Rapunzel Photo */
-    .photo img {
-        width: 240px;
-        height: 240px;
-        border-radius: 22px;
-        margin-top: 40px;
-        object-fit: cover;
-        border: 3px solid #ffd9e4;
-        box-shadow: 0 0 22px rgba(0,0,0,0.18);
-    }
-
     p {
         width: 86%;
         margin: auto;
@@ -88,9 +77,9 @@
         line-height: 1.8;
     }
 
-    /* Button */
+    /* Buttons */
     button {
-        margin-top: 28px;
+        margin-top: 18px;
         padding: 14px 28px;
         border: none;
         font-size: 17px;
@@ -105,44 +94,34 @@
         transform: scale(1.07);
     }
 
-    /* Hidden Message */
-    #hiddenMessage {
-        display: none;
-        margin-top: 25px;
-        font-size: 18px;
-        color: #7a4f5b;
-        width: 80%;
-        margin-left: auto;
-        margin-right: auto;
-        line-height: 1.7;
-    }
-
-    /* Floating Hearts */
-    .heart {
+    /* Animations */
+    .heart, .petal, .balloon {
         position: fixed;
         top: -10px;
-        color: #ff7ca3;
-        font-size: 22px;
-        animation: fall 6.5s linear infinite;
         opacity: 0.8;
+        animation: fall 7s linear infinite;
     }
-    @keyframes fall {
-        0% { transform: translateY(0) translateX(0); }
-        100% { transform: translateY(120vh) translateX(35px); }
-    }
+    .heart { color: #ff7ca3; font-size: 22px; }
+    .petal { color: #ff99b8; font-size: 22px; }
+    .balloon { font-size: 30px; }
 
-    /* Rose Petals */
-    .petal {
-        position: fixed;
-        top: -10px;
-        color: #ff99b8;
-        font-size: 20px;
-        opacity: 0.75;
-        animation: petalsFall 7s linear infinite;
-    }
-    @keyframes petalsFall {
+    @keyframes fall {
         0% { transform: translateY(0) rotate(0deg); }
         100% { transform: translateY(110vh) rotate(360deg); }
+    }
+
+    /* Firework explosion */
+    @keyframes pop {
+        0% { transform: scale(0); opacity: 1; }
+        100% { transform: scale(3); opacity: 0; }
+    }
+    .popper {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 40px;
+        animation: pop 1s ease-out forwards;
     }
 
     .footer {
@@ -166,31 +145,23 @@
     <div class="candle"><div class="flame"></div></div>
 </div>
 
-<!-- Photo -->
-<div class="photo">
-    <img src="https://i.imgur.com/0ZQPpQp.png" alt="Photo">
-</div>
-
-<!-- Message -->
+<!-- Romantic Message -->
 <p>
-    Rapunzel, today is your day — a day as beautiful as your heart.  
-    Even though this year I couldn’t celebrate like before,  
-    my prayers, love, and care for you remain endless.  
-    I hope this small website brings a smile to your face.  
-    May Allah bless your new year with happiness, peace, and everything good.  
+    Rapunzel,  
+    your presence brings a softness to life that cannot be described in words.  
+    Today, on your special day, I wish your heart finds peace, joy, and endless smiles.  
+    Even if my celebration is simple this year, my feelings will always remain warm,  
+    gentle, and sincere for you.  
+    May Allah bless every step you take today and always.  
     <br><br>— Yours, <strong>Zayn Ali</strong>
 </p>
 
+<!-- Buttons -->
 <button onclick="playMusic()">Play Birthday Music 🎶</button>
-
-<button onclick="revealMessage()">Reveal a Special Message 💗</button>
-
-<div id="hiddenMessage">
-    Rapunzel, I just want you to know that your kindness, your smile,  
-    and your presence bring light to so many days of my life.  
-    May this birthday mark the beginning of a year filled with joy,  
-    blessings, and beautiful memories.  
-</div>
+<button onclick="launchPoppers()">Party Poppers 🎉</button>
+<button onclick="launchHearts()">Heart Explosion ❤️</button>
+<button onclick="releaseBalloons()">Release Balloons 🎈</button>
+<button onclick="fireworks()">Fireworks ✨</button>
 
 <audio id="song" src="https://www.dropbox.com/scl/fi/t5g0a4q32xgkik3xek0qe/hbd.mp3?raw=1"></audio>
 
@@ -199,40 +170,76 @@
 </div>
 
 <script>
-    /* Hearts */
+    /* Hearts Falling */
     function createHeart() {
-        const heart = document.createElement("div");
-        heart.classList.add("heart");
-        heart.innerHTML = "❤️";
-        heart.style.left = Math.random() * window.innerWidth + "px";
-        heart.style.animationDuration = (4 + Math.random() * 5) + "s";
-        document.body.appendChild(heart);
-
-        setTimeout(() => heart.remove(), 9000);
+        const h = document.createElement("div");
+        h.classList.add("heart");
+        h.innerHTML = "❤️";
+        h.style.left = Math.random() * window.innerWidth + "px";
+        document.body.appendChild(h);
+        setTimeout(() => h.remove(), 9000);
     }
-    setInterval(createHeart, 500);
+    setInterval(createHeart, 800);
 
     /* Rose Petals */
     function createPetal() {
-        const petal = document.createElement("div");
-        petal.classList.add("petal");
-        petal.innerHTML = "🌸";
-        petal.style.left = Math.random() * window.innerWidth + "px";
-        petal.style.animationDuration = (5 + Math.random() * 5) + "s";
-        document.body.appendChild(petal);
-
-        setTimeout(() => petal.remove(), 9000);
+        const p = document.createElement("div");
+        p.classList.add("petal");
+        p.innerHTML = "🌸";
+        p.style.left = Math.random() * window.innerWidth + "px";
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), 9000);
     }
-    setInterval(createPetal, 700);
+    setInterval(createPetal, 900);
 
     /* Music */
     function playMusic() {
         document.getElementById("song").play();
     }
 
-    /* Hidden Message */
-    function revealMessage() {
-        document.getElementById("hiddenMessage").style.display = "block";
+    /* Party Poppers */
+    function launchPoppers() {
+        const pop = document.createElement("div");
+        pop.classList.add("popper");
+        pop.innerHTML = "🎉";
+        document.body.appendChild(pop);
+        setTimeout(() => pop.remove(), 1200);
+    }
+
+    /* Heart Explosion */
+    function launchHearts() {
+        for (let i = 0; i < 20; i++) {
+            const h = document.createElement("div");
+            h.classList.add("heart");
+            h.innerHTML = "❤️";
+            h.style.left = 50 + Math.random() * 200 - 100 + "%";
+            h.style.top = 50 + Math.random() * 200 - 100 + "%";
+            h.style.animationDuration = "2s";
+            document.body.appendChild(h);
+            setTimeout(() => h.remove(), 2500);
+        }
+    }
+
+    /* Balloons */
+    function releaseBalloons() {
+        for (let i = 0; i < 5; i++) {
+            const b = document.createElement("div");
+            b.classList.add("balloon");
+            b.innerHTML = "🎈";
+            b.style.left = Math.random() * window.innerWidth + "px";
+            b.style.animation = "fall 6s linear infinite reverse";
+            document.body.appendChild(b);
+            setTimeout(() => b.remove(), 7000);
+        }
+    }
+
+    /* Fireworks */
+    function fireworks() {
+        const f = document.createElement("div");
+        f.classList.add("popper");
+        f.innerHTML = "✨";
+        document.body.appendChild(f);
+        setTimeout(() => f.remove(), 1200);
     }
 </script>
 
